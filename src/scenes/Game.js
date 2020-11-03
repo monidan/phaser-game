@@ -16,6 +16,8 @@ export default class Game extends Phaser.Scene {
     }
 
     create() {
+        this.scene.run('game-background')
+
         this.physics.world.setBounds(-100, 0, 1000, 500)
 
         this.ball = this.add.circle(400, 250, 10, 0xffffff, 1)
@@ -35,9 +37,9 @@ export default class Game extends Phaser.Scene {
         this.aiPlatform = this.add.rectangle(750, 250, 20, 100, 0xFFFFFF, 1)
         this.physics.add.existing(this.aiPlatform, true)
 
-        this.score = this.add.text(330, 20, 'Score: ' + this.scoreNumber, {
-            fontSize: 24,
-            fontFamily: '"Press Start 2P"'
+        this.score = this.add.text(30, 20, 'Score:' + this.scoreNumber, {
+            fontSize: 28,
+            fontFamily: '"Press Start 2P"',
         })
 
         this.physics.add.collider(this.ball, this.platform)
