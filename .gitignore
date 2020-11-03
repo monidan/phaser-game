@@ -1,3 +1,6 @@
 ### Dependensies
 node_modules/
+
+
+.vscode/
 .cache/
