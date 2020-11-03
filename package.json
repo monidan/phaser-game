@@ -1,0 +1,31 @@
+{
+  "name": "genesis-game-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "parcel src/index.html -p 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monidan/genesis-game-task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monidan/genesis-game-task/issues"
+  },
+  "homepage": "https://github.com/monidan/genesis-game-task#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "phaser": "^3.24.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1"
+  }
+}
