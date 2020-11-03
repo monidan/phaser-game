@@ -4,6 +4,9 @@ export default class Game extends Phaser.Scene {
 
     init() {
         this.aiPlatformVelocity = new Phaser.Math.Vector2(0, 0);
+        this.scoreNumber = 0;
+        this.ballVelocityX = Phaser.Math.Between(-200, 200);
+        this.ballVelocityY = Phaser.Math.Between(-200, 200);
     }
 
     preload() {
@@ -17,7 +20,7 @@ export default class Game extends Phaser.Scene {
 
         this.ball.body.setCollideWorldBounds(true, 1, 1)
 
-        this.ball.body.setVelocity(Phaser.Math.Between(150, 200), Phaser.Math.Between(-150, -200))
+        this.ball.body.setVelocity(this.ballVelocityX, this.ballVelocityY)
 
         this.platform = this.add.rectangle(50, 250, 20, 100, 0xFFFFFF, 1)
         this.physics.add.existing(this.platform, true);
@@ -25,8 +28,10 @@ export default class Game extends Phaser.Scene {
         this.aiPlatform = this.add.rectangle(750, 250, 20, 100, 0xFFFFFF, 1)
         this.physics.add.existing(this.aiPlatform, true)
 
-        this.physics.add.collider(this.ball, this.aiPlatform)
+        this.score = this.add.text(350, 20, 'Score: ' + this.scoreNumber)
+
         this.physics.add.collider(this.ball, this.platform)
+        this.physics.add.collider(this.ball, this.aiPlatform)
     }
 
     update() {
@@ -47,16 +52,21 @@ export default class Game extends Phaser.Scene {
         if(diff < 0) {
             this.aiPlatformVelocity.y = -aiSpeed;
             if(this.aiPlatformVelocity.y < -10){
-                this.aiPlatformVelocity.y = -10
+                this.aiPlatformVelocity.y = -5
             }
         } else if (diff > 0) { 
             this.aiPlatformVelocity.y = aiSpeed;
             if(this.aiPlatformVelocity.y > 10){
-                this.aiPlatformVelocity.y = 10
+                this.aiPlatformVelocity.y = 5
             }
         }
 
         this.aiPlatform.y += this.aiPlatformVelocity.y;
         this.aiPlatform.body.updateFromGameObject();
+
+        if(this.ball.body.x === 800){
+            this.scoreNumber++;
+            this.score.setText(`Score: ${this.scoreNumber}`);
+        }
     }
 } 
