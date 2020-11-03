@@ -20,7 +20,8 @@
   "homepage": "https://github.com/monidan/genesis-game-task#readme",
   "dependencies": {
     "parcel-bundler": "^1.12.4",
-    "phaser": "^3.24.1"
+    "phaser": "^3.24.1",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",

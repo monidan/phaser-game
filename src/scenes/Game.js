@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 
+import WebFontFile from './WebFontFile';
+
 export default class Game extends Phaser.Scene {
 
     init() {
@@ -9,6 +11,8 @@ export default class Game extends Phaser.Scene {
 
     preload() {
         this.cursors = this.input.keyboard.createCursorKeys();
+        const fonts = new WebFontFile(this.load, 'Press Start 2P');
+        this.load.addFile(fonts);
     }
 
     create() {
@@ -31,7 +35,10 @@ export default class Game extends Phaser.Scene {
         this.aiPlatform = this.add.rectangle(750, 250, 20, 100, 0xFFFFFF, 1)
         this.physics.add.existing(this.aiPlatform, true)
 
-        this.score = this.add.text(350, 20, 'Score: ' + this.scoreNumber)
+        this.score = this.add.text(330, 20, 'Score: ' + this.scoreNumber, {
+            fontSize: 24,
+            fontFamily: '"Press Start 2P"'
+        })
 
         this.physics.add.collider(this.ball, this.platform)
         this.physics.add.collider(this.ball, this.aiPlatform)
